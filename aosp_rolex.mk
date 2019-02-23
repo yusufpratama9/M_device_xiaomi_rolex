@@ -17,11 +17,14 @@
 $(call inherit-product, device/xiaomi/rolex/full_rolex.mk)
 
 # Inherit some common stuff.
-$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
+$(call inherit-product, vendor/aosp/config/common.mk)
 TARGET_GAPPS_ARCH := arm64
 TARGET_DENSITY := xhdpi
 TARGET_BOOT_ANIMATION_RES := 720
 TARGET_USE_OLD_SOUND_PICKER := true
+
+# Inherit from our common CAF device tree.
+include device/qcom/common/common.mk
 
 PRODUCT_NAME := aosp_rolex
 BOARD_VENDOR := Xiaomi
