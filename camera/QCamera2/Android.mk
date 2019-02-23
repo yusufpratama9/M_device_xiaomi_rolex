@@ -47,7 +47,7 @@ LOCAL_SRC_FILES += \
         HAL/QCameraPostProc.cpp \
         HAL/QCamera2HWICallbacks.cpp \
         HAL/QCameraParameters.cpp \
-	HAL/CameraParameters.cpp \
+        HAL/CameraParameters.cpp \
         HAL/QCameraParametersIntf.cpp \
         HAL/QCameraThermalAdapter.cpp
 endif
@@ -72,9 +72,10 @@ endif
 ifeq ($(filter OMR1 O 8.1.0, $(PLATFORM_VERSION)), )
 USE_DISPLAY_SERVICE := true
 LOCAL_CFLAGS += -DUSE_DISPLAY_SERVICE
-endif
-
 LOCAL_CFLAGS += -std=c++11 -std=gnu++1y
+else
+LOCAL_CFLAGS += -std=c++11 -std=gnu++0x
+endif
 
 #HAL 1.0 Flags
 LOCAL_CFLAGS += -DDEFAULT_DENOISE_MODE_ON -DHAL3 -DQCAMERA_REDEFINE_LOG
@@ -126,10 +127,9 @@ LOCAL_C_INCLUDES += \
 LOCAL_SHARED_LIBRARIES := liblog libhardware libutils libcutils libdl libsync
 LOCAL_SHARED_LIBRARIES += libmmcamera_interface libmmjpeg_interface libui libcamera_metadata
 LOCAL_SHARED_LIBRARIES += libqdMetaData libqservice libbinder
-LOCAL_SHARED_LIBRARIES += libhidlbase libhwbinder
-LOCAL_SHARED_LIBRARIES += android.hardware.power@1.0
+LOCAL_SHARED_LIBRARIES += libcutils libdl
 ifeq ($(USE_DISPLAY_SERVICE),true)
-LOCAL_SHARED_LIBRARIES += android.frameworks.displayservice@1.0 libhidltransport
+LOCAL_SHARED_LIBRARIES += android.frameworks.displayservice@1.0 libhidlbase libhidltransport
 else
 LOCAL_SHARED_LIBRARIES += libgui
 endif
@@ -151,3 +151,4 @@ include $(BUILD_SHARED_LIBRARY)
 
 include $(call first-makefiles-under,$(LOCAL_PATH))
 endif
+
