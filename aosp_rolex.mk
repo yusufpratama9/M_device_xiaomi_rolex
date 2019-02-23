@@ -21,6 +21,7 @@ $(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 TARGET_GAPPS_ARCH := arm64
 TARGET_DENSITY := xhdpi
 TARGET_BOOT_ANIMATION_RES := 720
+TARGET_USE_OLD_SOUND_PICKER := true
 
 PRODUCT_NAME := aosp_rolex
 BOARD_VENDOR := Xiaomi
