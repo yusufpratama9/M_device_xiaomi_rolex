@@ -14,17 +14,22 @@
 # limitations under the License.
 #
 
-# Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+$(call inherit-product, device/xiaomi/rolex/full_rolex.mk)
 
-# Inherit from rolex device
-$(call inherit-product, device/xiaomi/rolex/device.mk)
+# Inherit some common stuff.
+$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
+TARGET_GAPPS_ARCH := arm64
+TARGET_DENSITY := xhdpi
+TARGET_BOOT_ANIMATION_RES := 720
 
-# Device identifier. This must come after all inclusions
-TARGET_VENDOR := Xiaomi
-PRODUCT_DEVICE := rolex
-PRODUCT_NAME := full_rolex
-PRODUCT_BRAND := Xiaomi
-PRODUCT_MODEL := Redmi 4A
-PRODUCT_MANUFACTURER := Xiaomi
+PRODUCT_NAME := aosp_rolex
+BOARD_VENDOR := Xiaomi
+
+PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRIVATE_BUILD_DESC="rolex-user 7.1.2 N2G47H V9.2.6.0.NCCMIEK release-keys"
+
+# Set BUILD_FINGERPRINT variable
+BUILD_FINGERPRINT := "Xiaomi/rolex/rolex:7.1.2/N2G47H/V9.2.6.0.NCCMIEK:user/release-keys"
+
