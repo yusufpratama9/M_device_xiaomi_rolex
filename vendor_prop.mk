@@ -88,9 +88,7 @@ debug.hwui.use_buffer_age=false \
 persist.graphics.vulkan.disable=true \
 persist.debug.wfd.enable=1 \
 debug.sdm.support_writeback=0 \
-debug.composition.type=gpu \
-sdm.debug.disable_rotator_split=1 \
-sdm.perf_hint_window=50
+debug.composition.type=gpu
 
 # Property to enable display default color mode
 PRODUCT_PROPERTY_OVERRIDES += \
